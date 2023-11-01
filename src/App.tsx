@@ -1,80 +1,22 @@
 import React, { useState } from 'react';
+import { CardData, CardList } from './DataInterface';
+
 import Header from './components/Header';
 import Card from './components/Card';
 import CardDetail from './components/CardDetail';
 import Sidebar from './components/Sidebar';
+import Footer from './components/Footer';
+
 
 import './App.css';
 import './styles/app.css';
 
-
-interface CardData {
-  title: string;
-  actor: string;
-  description: string;
-  imageUrl: string;
-}
-
-const spidermanData: CardData = {
-  title: "Spiderman",
-  actor: "Sam",
-  description: "hero movie",
-  imageUrl: "spider.png"
-};
-
-const data = {
-  avengers: [
-    // Sample data for Avengers cards
-    {
-      title: "Iron Man",
-      actor: "Tony",
-      description: "Metal suited hero",
-      imageUrl: "ironman.png"
-    },
-    //... more avengers cards data
-  ],
-  heroes: [
-    spidermanData,
-    //... more heroes cards data
-  ],
-  marvels: [
-    // Sample data for Marvels cards
-    {
-      title: "Wolverine",
-      actor: "Logan",
-      description: "Hero with claws",
-      imageUrl: "wolverine.png"
-    },
-    //... more marvels cards data
-  ],
-  comics: [
-    // Sample data for Comics cards
-    {
-      title: "Batman",
-      actor: "Bruce",
-      description: "Dark knight",
-      imageUrl: "batman.png"
-    },
-    //... more comics cards data
-  ],
-  monsters: [
-    // Sample data for Monsters cards
-    {
-      title: "Frankenstein",
-      actor: "Frank",
-      description: "Created monster",
-      imageUrl: "frankenstein.png"
-    },
-    //... more monsters cards data
-  ]
-}
-
-data.avengers.push(spidermanData);
-
+import data from './RawData';
 
 const App: React.FC = () => {
   const [selectedMenu, setSelectedMenu] = useState<string>('avengers');
   const [selectedCard, setSelectedCard] = useState<CardData | null>(null);
+  const [cardDataList, setCardDataList] = useState<CardList>(data);
 
   return (
     <div className="app-container">
@@ -84,7 +26,7 @@ const App: React.FC = () => {
         <div className="cards-area">
           {!selectedCard ? (
             <div className="cards-container">
-              {data[selectedMenu].map(card => (
+              {cardDataList[selectedMenu].map((card: CardData) => (
                 <Card 
                   key={card.title}
                   title={card.title}
@@ -106,6 +48,7 @@ const App: React.FC = () => {
           )}
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
