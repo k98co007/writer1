@@ -1,8 +1,30 @@
 .header {
-    font-size: 24px;
-    text-align: center;
-    padding: 20px;
+    display: flex;
+    flex-shrink: 0;
+    flex-direction: row;
     background-color: #eee;
+  }
+
+  .logo-container{
+    flex-shrink: 0;
+    width: 170px;
+    height: 120px;
+    display: flex;
+    justify-content:center; 
+    align-items : center;
+    
+  }
+
+  .logo{
+    
+    height: 80px;
+    object-fit:cover;
+  }
+
+  .title{
+    font-size: 34px;
+    text-align: center;
+    margin: 0 auto;
   }
   
   .app-container {
@@ -52,7 +74,11 @@
     transition: background 0.3s;
   }
   
-  .menu-item:hover, .menu-item.active {
+  .menu-item:hover {
+    background-color: #e7e7e7;
+  }
+  
+  .menu-item.active {
     background-color: #a7a7a7;
   }
   
@@ -61,7 +87,7 @@
   }
 
   footer {
-    background-color: #333;
+    background-color: #c3c3c3;
     color: #fff;
     padding: 10px 20px;
     bottom: 0;

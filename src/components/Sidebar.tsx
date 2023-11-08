@@ -1,12 +1,12 @@
 import React from 'react';
 
 interface SidebarProps {
+  menus: string[];
   activeMenu: string;
   onMenuSelect: (menu: string) => void;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ activeMenu, onMenuSelect }) => {
-  const menus = ['avengers', 'heroes', 'marvels', 'comics', 'monsters'];
+const Sidebar: React.FC<SidebarProps> = ({ menus, activeMenu, onMenuSelect }) => {
 
   return (
     <div className="sidebar">

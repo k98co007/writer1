@@ -12,9 +12,10 @@ import './App.css';
 import './styles/app.css';
 
 import data from './RawData';
+import ClassListData from './ClassListData';
 
 const App: React.FC = () => {
-  const [selectedMenu, setSelectedMenu] = useState<string>('avengers');
+  const [selectedMenu, setSelectedMenu] = useState<string>('Home');
   const [selectedCard, setSelectedCard] = useState<CardData | null>(null);
   const [cardDataList, setCardDataList] = useState<CardList>(data);
 
@@ -22,9 +23,9 @@ const App: React.FC = () => {
     <div className="app-container">
       <Header />
       <div className="content-container">
-        <Sidebar activeMenu={selectedMenu} onMenuSelect={setSelectedMenu} />
+        <Sidebar menus={ClassListData} activeMenu={selectedMenu} onMenuSelect={setSelectedMenu} />
         <div className="cards-area">
-          {!selectedCard ? (
+          {/* {!selectedCard ? (
             <div className="cards-container">
               {cardDataList[selectedMenu].map((card: CardData) => (
                 <Card 
@@ -45,7 +46,7 @@ const App: React.FC = () => {
               imageUrl={selectedCard.imageUrl}
               onBack={() => setSelectedCard(null)}
             />
-          )}
+          )} */}
         </div>
       </div>
       <Footer />
